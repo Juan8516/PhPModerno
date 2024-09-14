@@ -23,7 +23,7 @@ for($i = 1; $i < 10; $i++){
 }
 echo "--";
 
-//Iteracion for con if y break
+//Iteracion for con if y continue
 for($i = 1; $i < 10; $i++){
     if($i % 2 == 0){
         continue; //Salta los pares, muestra solo impares
