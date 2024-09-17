@@ -1,4 +1,6 @@
 <?php
+
+//Variable
 $age = 4;
 
 /*Comparativas
@@ -6,6 +8,7 @@ $age = 4;
     || (OR lógico) se usa para verificar si al menos una de las condiciones es verdadera.
 */
 
+//Se deben cumplir las dos condiciones &&.
 if($age >= 0 && $age < 18){
     echo "Es de edad temprana";
 } elseif ($age > 18 && $age < 60) {

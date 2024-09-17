@@ -10,8 +10,7 @@ while($i <= 10){
     echo $i;
     $i++;
 }
-echo "--";
-
+echo "<br>";
 
 //Iteracion for con if y break
 while($j <= 10){
@@ -21,7 +20,7 @@ while($j <= 10){
     $j++;
     echo $j;
 }
-echo "--";
+echo "<br>";
 
 //Iteracion for con if - (mostrar numeros pares)
 while($k <= 10){
@@ -30,7 +29,7 @@ while($k <= 10){
     }
     $k++;
 }
-echo "--";
+echo "<br>";
 
 //Iteracion for con if - (mostrar numeros impares)
 while($l <= 10){

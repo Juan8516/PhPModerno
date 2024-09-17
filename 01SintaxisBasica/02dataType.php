@@ -1,10 +1,18 @@
 <?php
-$number = 16;
-$decimal = 3.1416;
-$name = "Simon Salazar";
-$isFalse = true;
-$empty = null;
 
+//Tipos de datos.
+
+//Numericos
+$number = 16;
+//Decimales
+$decimal = 3.1416;
+//Cadena de texto.
+$name = "Simon Salazar";
+//Booleano.
+$isFalse = true;
+//Dato vacio.
+$empty = null;
+//Tipo de dato string 
 $number = "3";
 
 //Casteo

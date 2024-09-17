@@ -4,7 +4,7 @@
 for($i = 1; $i <= 10; $i++){
     echo $i;
 }
-echo "--";
+echo "<br>";
 
 //Iteracion for con if y break
 for($i = 1; $i < 10; $i++){
@@ -13,7 +13,7 @@ for($i = 1; $i < 10; $i++){
     }
     echo $i;
 }
-echo "--";
+echo "<br>";
 
 //Iteracion for con if - (mostrar numeros pares)
 for($i = 1; $i < 10; $i++){
@@ -21,7 +21,7 @@ for($i = 1; $i < 10; $i++){
         echo $i;
     }
 }
-echo "--";
+echo "<br>";
 
 //Iteracion for con if y continue
 for($i = 1; $i < 10; $i++){
@@ -29,4 +29,20 @@ for($i = 1; $i < 10; $i++){
         continue; //Salta los pares, muestra solo impares
     }
     echo $i;
+}
+echo "<br>";
+
+//Ejemplo numeros pares sin break.
+for($i = 1; $i <= 10; $i++){
+    if($i % 2 == 0){
+        echo $i;
+    }
+}
+echo "<br>";
+
+//Ejemplo numeros impares sin continue.
+for($i = 1; $i <= 10; $i++){
+    if($i % 2 == 1){
+        echo $i;
+    }
 }

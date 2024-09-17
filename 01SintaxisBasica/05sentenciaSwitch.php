@@ -1,7 +1,9 @@
 <?php
 
+//Inicializacion de la condicion que se debe presentar.
 $mount = 12;
 
+//Verificacion de cada caso.
 switch($mount){
     case 1;
     case 2;
