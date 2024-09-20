@@ -1,4 +1,6 @@
 <?php
+//Forzar tipado estricto
+declare(strict_types=1);
 
 /*Una clase es una plantilla que define propiedades y métodos para crear objetos, 
 permitiendo organizar y reutilizar código mediante la programación orientada a objetos (POO)*/
@@ -7,6 +9,11 @@ permitiendo organizar y reutilizar código mediante la programación orientada a
 $sale = new Sale(250000, date("Y-m-d"));
 $sale = new Sale(250000, date("Y-m-d"));
 $sale = new Sale(250000, date("Y-m-d"));
+
+//Tipado
+echo gettype($sale->total)."<br>";
+echo gettype($sale->date)."<br>";
+
 echo Sale::$count."<br>";//3
 $sale = new Sale(250000, date("Y-m-d"));
 echo Sale::$count."<br>";//4
@@ -29,14 +36,15 @@ $sale->createInvoice();
 
 //Llamado metodo propina
 $propina = $sale->createTip(15000);
-echo $propina;
+echo $propina."<br>";
 
 print_r($sale);
 
 // Creación de la clase Sale con propiedades públicas total y date
  class Sale {
-    public $total;
-    public $date;
+    public int $total;
+    public string $date;
+
     /*Un método estático en PHP es un método que pertenece a la clase en sí, 
     no a una instancia de la clase, y se puede llamar directamente usando el 
     operador :: sin necesidad de crear un objeto*/
@@ -44,7 +52,7 @@ print_r($sale);
 
     /*Los constructores hacen que la creación de objetos sea más 
     eficiente y estructurada.*/
-    public  function __construct($total, $date){
+    public  function __construct(int $total, string $date){
       $this->total = $total;
       $this->date = $date;
       self::$count++;
@@ -66,11 +74,11 @@ print_r($sale);
     // }
 
     //Funcion dentro de la clase: metodo
-    public function createInvoice(){
-      echo "Factura impresa <br>";
+    public function createInvoice(): string{
+      return "Factura impresa <br>";
     }
 
-    public function createTip(){
-       return;
+    public function createTip(): int{
+       return 15;
     }
  }
