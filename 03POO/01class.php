@@ -4,7 +4,7 @@
 permitiendo organizar y reutilizar código mediante la programación orientada a objetos (POO)*/
 
 // Creación de una nueva instancia de la clase Sale.
-$sale = new Sale(250000, date("Y-m-d"));
+$sale = new Sale(250000, date("Y-m-d")."<br>");
 
 // Asignación de valores a las propiedades total y date de la instancia $sale
 /* ### Nota con los constructores ya no es necesario ### */ 
@@ -33,9 +33,17 @@ print_r($sale);
       $this->date = $date;
     }
 
+    /*Un destructor es un método especial (__destruct()) que se ejecuta 
+    automáticamente cuando un objeto se destruye o se sale de su alcance, 
+    utilizado para liberar recursos o realizar tareas de limpieza.*/
+    public function __destruct()
+    {
+      echo "Objeto eliminado";
+    }
+
     //Funcion dentro de la clase: metodo
     public function createInvoice(){
-      echo "Factura impresa";
+      echo "Factura impresa <br>";
     }
 
     public function createTip(){
