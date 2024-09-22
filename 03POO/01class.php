@@ -10,6 +10,7 @@ $sale = new Sale(250000, date("Y-m-d"));
 $sale = new Sale(250000, date("Y-m-d"));
 $sale = new Sale(250000, date("Y-m-d"));
 $concept = new Concept("Coca Cola", 6);
+$concept = new Concept("Taco", 1.5);
 
 //
 $sale->addConcept($concept);
@@ -97,9 +98,9 @@ print_r($sale);
 
   class Concept {
     public string $description;
-    public float $amount;
+    public int|float $amount;
 
-    public function __construct(string $description, float $amount)
+    public function __construct(string $description, int|float $amount)
     {
       $this->description = $description;
       $this->amount = $amount;
