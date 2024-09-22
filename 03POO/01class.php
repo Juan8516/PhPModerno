@@ -9,10 +9,15 @@ permitiendo organizar y reutilizar código mediante la programación orientada a
 $sale = new Sale(250000, date("Y-m-d"));
 $sale = new Sale(250000, date("Y-m-d"));
 $sale = new Sale(250000, date("Y-m-d"));
+$concept = new Concept("Coca Cola", 6);
+
+//
+$sale->addConcept($concept);
+print_r($sale->concepts);
 
 //Tipado
-echo gettype($sale->total)."<br>";
-echo gettype($sale->date)."<br>";
+//echo gettype($sale->total)."<br>";
+//echo gettype($sale->date)."<br>";
 
 echo Sale::$count."<br>";//3
 $sale = new Sale(250000, date("Y-m-d"));
@@ -43,6 +48,7 @@ print_r($sale);
 // Creación de la clase Sale con propiedades públicas total y date
  class Sale {
     public int $total;
+    public array $concepts;
     public string $date;
 
     /*Un método estático en PHP es un método que pertenece a la clase en sí, 
@@ -55,6 +61,7 @@ print_r($sale);
     public  function __construct(int $total, string $date){
       $this->total = $total;
       $this->date = $date;
+      $this->concepts = [];
       self::$count++;
     }
 
@@ -63,6 +70,10 @@ print_r($sale);
     sin crear un objeto.*/
     public static function reset(){
       self::$count = 0;
+    }
+
+    public function addConcept(Concept $concept){
+      $this->concepts[] = $concept;
     }
 
     /*Un destructor es un método especial (__destruct()) que se ejecuta 
@@ -81,4 +92,17 @@ print_r($sale);
     public function createTip(): int{
        return 15;
     }
- }
+
+  }
+
+  class Concept {
+    public string $description;
+    public float $amount;
+
+    public function __construct(string $description, float $amount)
+    {
+      $this->description = $description;
+      $this->amount = $amount;
+    }
+
+  }
