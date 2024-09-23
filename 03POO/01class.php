@@ -12,7 +12,16 @@ $sale = new Sale(250000, date("Y-m-d"));
 $concept = new Concept("Coca Cola", 6);
 $concept = new Concept("Taco", 1.5);
 
-//
+
+//Herencia
+//Creacion instancia de herencia
+$OnLineSale = new OnlineSale(15, date("Y-m-d"), "ATM");
+//Uso de los metodos del padre.
+echo $OnLineSale->createInvoice();
+echo $OnLineSale->showInfo();
+echo "<br>";
+
+//Llamado funcion concepts
 $sale->addConcept($concept);
 print_r($sale->concepts);
 
@@ -94,6 +103,21 @@ print_r($sale);
        return 15;
     }
 
+  }
+
+  //Herencia
+  class OnlineSale extends Sale {
+    public string $paymentMethod;
+
+    public function __construct(int $total, string $date, 
+      string $paymentMethod){
+      parent::__construct($total, $date);
+      $this->$paymentMethod = $paymentMethod;
+    }
+
+    public function showInfo(){
+      return "La venta tiene un valor de: $this->total";
+    }
   }
 
   class Concept {
