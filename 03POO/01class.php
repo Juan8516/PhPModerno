@@ -6,16 +6,17 @@ declare(strict_types=1);
 permitiendo organizar y reutilizar código mediante la programación orientada a objetos (POO)*/
 
 // Creación de una nueva instancia de la clase Sale.
-$sale = new Sale(250000, date("Y-m-d"));
-$sale = new Sale(250000, date("Y-m-d"));
-$sale = new Sale(250000, date("Y-m-d"));
+$sale = new Sale(date("Y-m-d"));
+$sale = new Sale(date("Y-m-d"));
+$sale = new Sale(date("Y-m-d"));
 $concept = new Concept("Coca Cola", 6);
 $concept = new Concept("Taco", 1.5);
-
+$sale->addConcept($concept);
+echo $sale->getTotal();
 
 //Herencia
 //Creacion instancia de herencia
-$OnLineSale = new OnlineSale(15, date("Y-m-d"), "ATM");
+$OnLineSale = new OnlineSale(date("Y-m-d"), "ATM");
 //Uso de los metodos del padre.
 echo $OnLineSale->createInvoice();
 echo $OnLineSale->showInfo();
@@ -30,12 +31,12 @@ print_r($sale->concepts);
 //echo gettype($sale->date)."<br>";
 
 echo Sale::$count."<br>";//3
-$sale = new Sale(250000, date("Y-m-d"));
+$sale = new Sale(date("Y-m-d"));
 echo Sale::$count."<br>";//4
 
 //Llamado propiedad estatica
 Sale::reset();//0
-$sale = new Sale(250000, date("Y-m-d"));
+$sale = new Sale(date("Y-m-d"));
 
 //Llamado del metodo estatico
 echo Sale::$count;//1
@@ -57,7 +58,7 @@ print_r($sale);
 
 // Creación de la clase Sale con propiedades públicas total y date
  class Sale {
-    public int $total;
+    protected int $total;
     public array $concepts;
     public string $date;
 
@@ -68,8 +69,8 @@ print_r($sale);
 
     /*Los constructores hacen que la creación de objetos sea más 
     eficiente y estructurada.*/
-    public  function __construct(int $total, string $date){
-      $this->total = $total;
+    public  function __construct(string $date){
+      $this->total = 0;
       $this->date = $date;
       $this->concepts = [];
       self::$count++;
@@ -84,6 +85,11 @@ print_r($sale);
 
     public function addConcept(Concept $concept){
       $this->concepts[] = $concept;
+      $this->total += $concept->amount;
+    }
+
+    public function getTotal(){
+      return $this->total;
     }
 
     /*Un destructor es un método especial (__destruct()) que se ejecuta 
@@ -109,9 +115,8 @@ print_r($sale);
   class OnlineSale extends Sale {
     public string $paymentMethod;
 
-    public function __construct(int $total, string $date, 
-      string $paymentMethod){
-      parent::__construct($total, $date);
+    public function __construct(string $date, string $paymentMethod){
+      parent::__construct($date);
       $this->$paymentMethod = $paymentMethod;
     }
 
