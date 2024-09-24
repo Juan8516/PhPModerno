@@ -60,7 +60,7 @@ print_r($sale);
  class Sale {
     protected int $total;
     public array $concepts;
-    public string $date;
+    private string $date;
 
     /*Un método estático en PHP es un método que pertenece a la clase en sí, 
     no a una instancia de la clase, y se puede llamar directamente usando el 
@@ -90,6 +90,14 @@ print_r($sale);
 
     public function getTotal(){
       return $this->total;
+    }
+
+    public function getDate(){
+      return $this->date;
+    }
+
+    public function setDate(string $date){
+      $this->date = $date;
     }
 
     /*Un destructor es un método especial (__destruct()) que se ejecuta 
